@@ -1,6 +1,12 @@
+import { navigate2 } from './utils.js';
+
+const buttons = document.querySelectorAll('#buttons > *')
+
 // for each button add event listener
-document.querySelectorAll('#buttons > *').forEach(button =>
+buttons.forEach(button =>
     button.addEventListener('click', function() {
-        console.log(this.dataset.path)
+        const listType = this.dataset.listType
+        const listData = 'all'
+        navigate2('list', {'listType': listType, 'listData': listData})
     })
 );
