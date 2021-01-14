@@ -14,7 +14,7 @@ if (ListTypes.hasOwnProperty(listType)) { // validate listType
             fetch(value.Value, (result, data) => {
                 switch (result) {
                     case Result.Success:
-                        data.map(value.Desc).forEach(entity => { append(entity) })
+                        data.map(value.Description).forEach(entity => { append(entity) })
                         break
                     case Result.Failure:
                         error(data)

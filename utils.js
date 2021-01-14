@@ -1,37 +1,63 @@
-// list types
+/**
+ * ListTypes enum
+ * each case contains:
+ * 1. its *unique* string value (also used as PATH)
+ * 2. entity to Description converter function
+ * 3. entity to Details converter function
+ */
 export const ListTypes = {
 
+    /* case Films */
     Films: {
         Value: 'films',
-        Desc: function(entity) {
+        Description: function(entity) {
+            return { id: entity.id }
+        },
+        Details: function(entity) {
             return { id: entity.id }
         }
     },
 
+    /* case People */
     People: {
         Value: 'people',
-        Desc: function(entity) {
+        Description: function(entity) {
+            return { id: entity.id }
+        },
+        Details: function(entity) {
             return { id: entity.id }
         }
     },
 
+    /* case Locations */
     Locations: {
         Value: 'locations',
-        Desc: function(entity) {
+        Description: function(entity) {
+            return { id: entity.id }
+        },
+        Details: function(entity) {
             return { id: entity.id }
         }
     },
 
+    /* case Species */
     Species: {
         Value: 'species',
-        Desc: function(entity) {
+        Description: function(entity) {
+            return { id: entity.id }
+        },
+        Details: function(entity) {
             return { id: entity.id }
         }
     },
 
+    /* case Vehicles */
     Vehicles: {
         Value: 'vehicles',
-        Desc: function(entity) {
+        Description: function(entity) {
+            return { id: entity.id }
+        },
+        Details: function(entity) {
             return { id: entity.id }
         }
     }
