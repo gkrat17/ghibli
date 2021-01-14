@@ -34,5 +34,5 @@ if (ListTypes.hasOwnProperty(listType)) { // validate listType
 
 // appends child to container list
 function append(entity) {
-    console.log(entity)
+    console.log(entity) // TODO: append to container
 }

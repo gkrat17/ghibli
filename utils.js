@@ -11,7 +11,13 @@ export const ListTypes = {
     Films: {
         Value: 'films',
         Description: function(entity) {
-            return { id: entity.id }
+            return {
+                id:    entity.id,
+                title: entity.title,
+                description: {
+                    'Description': entity.description
+                }
+            }
         },
         Details: function(entity) {
             return { id: entity.id }
@@ -22,7 +28,15 @@ export const ListTypes = {
     People: {
         Value: 'people',
         Description: function(entity) {
-            return { id: entity.id }
+            return {
+                id:    entity.id,
+                title: entity.name,
+                description: {
+                    'Gender':     entity.gender,
+                    'Eye Color':  entity.eye_color,
+                    'Hair Color': entity.hair_color
+                }
+            }
         },
         Details: function(entity) {
             return { id: entity.id }
@@ -33,7 +47,15 @@ export const ListTypes = {
     Locations: {
         Value: 'locations',
         Description: function(entity) {
-            return { id: entity.id }
+            return {
+                id:    entity.id,
+                title: entity.name,
+                description: {
+                    'Climate':       entity.climate,
+                    'Terrain':       entity.terrain,
+                    'Surface Water': entity.surface_water
+                }
+            }
         },
         Details: function(entity) {
             return { id: entity.id }
@@ -44,7 +66,15 @@ export const ListTypes = {
     Species: {
         Value: 'species',
         Description: function(entity) {
-            return { id: entity.id }
+            return {
+                id:    entity.id,
+                title: entity.name,
+                description: {
+                    'Classification': entity.classification,
+                    'Eye Colors'    : entity.eye_colors,
+                    'Hair Colors'   : entity.hair_colors
+                }
+            }
         },
         Details: function(entity) {
             return { id: entity.id }
@@ -55,7 +85,13 @@ export const ListTypes = {
     Vehicles: {
         Value: 'vehicles',
         Description: function(entity) {
-            return { id: entity.id }
+            return {
+                id:    entity.id,
+                title: entity.name,
+                description: {
+                    'Description': entity.description
+                }
+            }
         },
         Details: function(entity) {
             return { id: entity.id }
