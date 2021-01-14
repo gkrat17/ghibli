@@ -34,11 +34,16 @@ export const Host = 'https://ghibliapi.herokuapp.com'
 export function fetch(path, completion) {
     const request = new XMLHttpRequest()
     request.open('GET', `${Host}/${path}`, true)
-    request.onload = function () {
+    request.onload = function() {
         const response = JSON.parse(this.response)
         if (request.status == 200)
             completion(Result.Success, response)
         else completion(Result.Failure, 'Error Message')
     }
     request.send()
+}
+
+// error handler
+export function error(message) {
+    console.log('Failure', data)
 }

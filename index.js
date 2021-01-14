@@ -1,24 +1,24 @@
 import { ListTypes, navigate2 } from './utils.js'
 
 // get container by id
-const container = document.querySelector('#card-container')
+const container = document.querySelector('#container')
 
-// for each button add event listener
+// for each element add event listener
 ListTypes.forEach((listType) => {
 
-    // create card
-    const card = document.createElement('button')
+    // create element
+    const element = document.createElement('button')
 
-    // configure card
-    card.setAttribute('data-list-type', listType)
-    card.textContent = listType
+    // configure element
+    element.setAttribute('data-list-type', listType)
+    element.textContent = listType
 
-    card.addEventListener('click', function() {
+    element.addEventListener('click', function() {
         const listType = this.dataset.listType
         const listData = 'all'
         navigate2('list', { listType: listType, listData: listData })
     })
 
-    // add to container
-    container.appendChild(card)
+    // add elem to container
+    container.appendChild(element)
 })
