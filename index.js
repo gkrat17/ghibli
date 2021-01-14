@@ -1,4 +1,4 @@
-import { navigate2 } from './utils.js';
+import { navigate2 } from './utils.js'
 
 const buttons = document.querySelectorAll('#buttons > *')
 
@@ -9,4 +9,4 @@ buttons.forEach(button =>
         const listData = 'all'
         navigate2('list', { listType: listType, listData: listData })
     })
-);
+)
