@@ -1,3 +1,8 @@
+// list types
+export const ListTypes = ['films', 'people', 'locations', 'species', 'vehicles']
+
+// navigates to page specified by path variable
+// for example - 'list', 'description'
 export function navigate2(path, params) {
 
     const form  = document.createElement('form')
@@ -16,14 +21,24 @@ export function navigate2(path, params) {
     form.submit()
 }
 
+// success / failure enum
+export const Result = {
+    Success: 'Success',
+    Failure: 'Failure'
+}
+
+// server host url
+export const Host = 'https://ghibliapi.herokuapp.com'
+
+// fetchs data from server
 export function fetch(path, completion) {
     const request = new XMLHttpRequest()
-    request.open('GET', `https://ghibliapi.herokuapp.com/${path}`, true)
+    request.open('GET', `${Host}/${path}`, true)
     request.onload = function () {
         const response = JSON.parse(this.response)
         if (request.status == 200)
-            completion({ success: response })
-        else completion({ failure: 'error' })
+            completion(Result.Success, response)
+        else completion(Result.Failure, 'Error Message')
     }
     request.send()
 }

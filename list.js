@@ -1,23 +1,23 @@
-import { fetch } from './utils.js'
+import { ListTypes, fetch, Result } from './utils.js'
 
 const urlParams = new URLSearchParams(window.location.search)
 const listType  = urlParams.get('listType')
 
 // validate listType
-if (['films', 'people', 'locations', 'species', 'vehicles'].includes(listType)) {
+if (ListTypes.includes(listType)) {
 
     const listData = urlParams.get('listData')
-
     switch (listData) {
 
         case 'all':
-            fetch(listType, function(result) {
-                if (result.hasOwnProperty('success')) {
-                    const list = result.success
-                    console.log('success', list)
-                } else /* 'failure' */ {
-                    const message = result.failure
-                    console.log('failure', message)
+            fetch(listType, function(result, data) {
+                switch (result) {
+                    case Result.Success:
+                        console.log('Success', data)
+                        break
+                    case Result.Failure:
+                        console.log('Failure', data)
+                        break
                 }
             })
             break
@@ -28,7 +28,7 @@ if (['films', 'people', 'locations', 'species', 'vehicles'].includes(listType)) 
 
         default:
             // error: invalid listData parameter
-            break
+            break // DELETE
     }
 
 } else {
