@@ -4,7 +4,7 @@ const urlParams = new URLSearchParams(window.location.search)
 const listType  = urlParams.get('listType')
 
 // validate listType
-if (['films', 'people', 'locations', 'species', 'venicles'].includes(listType)) {
+if (['films', 'people', 'locations', 'species', 'vehicles'].includes(listType)) {
 
     const listData = urlParams.get('listData')
 
@@ -14,7 +14,7 @@ if (['films', 'people', 'locations', 'species', 'venicles'].includes(listType)) 
             fetch(listType, function(result) {
                 if (result.hasOwnProperty('success')) {
                     const list = result.success
-                    console.log('success', list[0].title)
+                    console.log('success', list)
                 } else /* 'failure' */ {
                     const message = result.failure
                     console.log('failure', message)
