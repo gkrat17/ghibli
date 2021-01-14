@@ -4,13 +4,12 @@ export function navigate2(path, params) {
     form.method = 'GET';
     form.action = `${path}.html`;
 
-    for (const key in params) {
-        if (params.hasOwnProperty(key)) {
-            const param = document.createElement('input');
-            param.name  = key;
-            param.value = params[key];
-            form.appendChild(param);
-        }
+    for (const [key, value] of Object.entries(params)) {
+        const param = document.createElement('input');
+        param.type  = 'hidden';
+        param.name  = key;
+        param.value = value;
+        form.appendChild(param);
     }
 
     document.body.appendChild(form);

@@ -7,6 +7,6 @@ buttons.forEach(button =>
     button.addEventListener('click', function() {
         const listType = this.dataset.listType
         const listData = 'all'
-        navigate2('list', {'listType': listType, 'listData': listData})
+        navigate2('list', { listType: listType, listData: listData })
     })
 );
