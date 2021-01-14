@@ -3,7 +3,7 @@ import { ListTypes, fetch, Result, error } from './utils.js'
 const urlParams = new URLSearchParams(window.location.search)
 const listType  = urlParams.get('listType')
 
-if (ListTypes.includes(listType)) { // validate listType
+if (Object.values(ListTypes).includes(listType)) { // validate listType
     const listData = urlParams.get('listData')
     switch (listData) {
 

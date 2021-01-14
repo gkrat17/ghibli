@@ -1,5 +1,11 @@
 // list types
-export const ListTypes = ['films', 'people', 'locations', 'species', 'vehicles']
+export const ListTypes = {
+    Films:     'films',
+    People:    'people',
+    Locations: 'locations',
+    Species:   'species',
+    Vehicles:  'vehicles'
+}
 
 // navigates to page specified by path variable
 // for example - 'list', 'description'
