@@ -5,7 +5,7 @@ const container = document.querySelector('#container')
 
 // for each element add event listener
 for (const listType in ListTypes) {
-    const value = ListTypes[listType]
+    const value = ListTypes[listType].Value
 
     // create element
     const element = document.createElement('button')

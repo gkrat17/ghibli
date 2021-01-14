@@ -1,10 +1,45 @@
 // list types
 export const ListTypes = {
-    Films:     'films',
-    People:    'people',
-    Locations: 'locations',
-    Species:   'species',
-    Vehicles:  'vehicles'
+
+    Films: {
+        Value: 'films',
+        Desc: function(entity) {
+            return { id: entity.id }
+        }
+    },
+
+    People: {
+        Value: 'people',
+        Desc: function(entity) {
+            return { id: entity.id }
+        }
+    },
+
+    Locations: {
+        Value: 'locations',
+        Desc: function(entity) {
+            return { id: entity.id }
+        }
+    },
+
+    Species: {
+        Value: 'species',
+        Desc: function(entity) {
+            return { id: entity.id }
+        }
+    },
+
+    Vehicles: {
+        Value: 'vehicles',
+        Desc: function(entity) {
+            return { id: entity.id }
+        }
+    }
+}
+
+// returns key of ListTypes by its value
+export function key(value) {
+    return Object.keys(ListTypes).find(key => ListTypes[key].Value === value)
 }
 
 // navigates to page specified by path variable
@@ -16,11 +51,13 @@ export function navigate2(path, params) {
     form.action = `${path}.html`
 
     for (const [key, value] of Object.entries(params)) {
-        const param = document.createElement('input')
-        param.type  = 'hidden'
-        param.name  = key
-        param.value = value
-        form.appendChild(param)
+        if (params.hasOwnProperty(key)) {
+            const param = document.createElement('input')
+            param.type  = 'hidden'
+            param.name  = key
+            param.value = value
+            form.appendChild(param)
+        }
     }
 
     document.body.appendChild(form)
@@ -51,5 +88,5 @@ export function fetch(path, completion) {
 
 // error handler
 export function error(message) {
-    console.log('Failure', data)
+    console.log('Failure', message)
 }

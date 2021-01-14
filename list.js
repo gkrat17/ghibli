@@ -1,17 +1,20 @@
-import { ListTypes, fetch, Result, error } from './utils.js'
+import { key, ListTypes, fetch, Result, error } from './utils.js'
 
 const urlParams = new URLSearchParams(window.location.search)
-const listType  = urlParams.get('listType')
+const listType  = key(urlParams.get('listType'))
 
-if (Object.values(ListTypes).includes(listType)) { // validate listType
+if (ListTypes.hasOwnProperty(listType)) { // validate listType
+
+    const value    = ListTypes[listType]
     const listData = urlParams.get('listData')
+
     switch (listData) {
 
         case 'all':
-            fetch(listType, (result, data) => {
+            fetch(value.Value, (result, data) => {
                 switch (result) {
                     case Result.Success:
-                        data.map(entity).forEach(entity => { append(entity) })
+                        data.map(value.Desc).forEach(entity => { append(entity) })
                         break
                     case Result.Failure:
                         error(data)
@@ -28,11 +31,6 @@ if (Object.values(ListTypes).includes(listType)) { // validate listType
             error('invalid listData parameter')
     }
 } else error('invalid listType parameter')
-
-// converts data entity to list entity
-function entity(data) {
-    return { id: data.id, type: listType }
-}
 
 // appends child to container list
 function append(entity) {
