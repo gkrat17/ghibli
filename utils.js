@@ -1,7 +1,7 @@
 /**
  * ListTypes enum
  * each case contains:
- * 1. its *unique* string value (also used as PATH)
+ * 1. its * unique * string value (also used as PATH)
  * 2. entity to Description converter function
  * 3. entity to Details converter function
  */

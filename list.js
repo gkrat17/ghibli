@@ -23,8 +23,21 @@ if (ListTypes.hasOwnProperty(listType)) { // validate listType
             })
             break
 
-        case 'ids':
-            // TODO: handle 'ids' case
+        case 'certain':
+            const ids = urlParams.get('ids').split(',')
+            ids.forEach(id => {
+                const path = `${value.Value}/${id}`
+                fetch(path, (result, data) => {
+                    switch (result) {
+                        case Result.Success:
+                            append(value.Description(data))
+                            break
+                        case Result.Failure:
+                            error(data)
+                            break
+                    }
+                })
+            })
             break
 
         default:
