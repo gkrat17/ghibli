@@ -24,13 +24,12 @@ if (ListTypes.hasOwnProperty(listType)) { // validate listType
             break
 
         case 'certain':
-            var ids = urlParams.get('ids')
+            const ids = urlParams.get('ids')
             if (ids == null) {
                 error('ids not passed')
                 break
             }
-            ids = ids.split(',')
-            ids.forEach(id => {
+            ids.split(',').forEach(id => {
                 const path = `${value.Value}/${id}`
                 fetch(path, (result, data) => {
                     switch (result) {
