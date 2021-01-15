@@ -30,10 +30,10 @@ export const ListTypes = {
                     'Rate Score':   entity.rt_score
                 },
                 associations: associations(entity, [
-                    ['people',    'People'],
-                    ['species',   'Species'],
-                    ['locations', 'Locations'],
-                    ['vehicles',  'Vehicles']
+                    ['people',    'people'],
+                    ['species',   'species'],
+                    ['locations', 'locations'],
+                    ['vehicles',  'vehicles']
                 ])
             }
         }
@@ -47,14 +47,25 @@ export const ListTypes = {
                 id:    entity.id,
                 title: entity.name,
                 description: {
-                    'Gender':     entity.gender,
-                    'Eye Color':  entity.eye_color,
-                    'Hair Color': entity.hair_color
+                    'Gender': entity.gender,
+                    'Age':    entity.age
                 }
             }
         },
         Details: function(entity) {
-            return { id: entity.id }
+            return {
+                title: entity.name,
+                details: {
+                    'Gender':     entity.gender,
+                    'Age':        entity.age,
+                    'Eye Color':  entity.eye_color,
+                    'Hair Color': entity.hair_color
+                },
+                associations: associations(entity, [
+                    ['films',   'films'],
+                    ['species', 'species']
+                ])
+            }
         }
     },
 
@@ -66,14 +77,24 @@ export const ListTypes = {
                 id:    entity.id,
                 title: entity.name,
                 description: {
-                    'Climate':       entity.climate,
-                    'Terrain':       entity.terrain,
-                    'Surface Water': entity.surface_water
+                    'Climate': entity.climate,
+                    'Terrain': entity.terrain
                 }
             }
         },
         Details: function(entity) {
-            return { id: entity.id }
+            return {
+                title: entity.name,
+                details: {
+                    'Climate':       entity.climate,
+                    'Terrain':       entity.terrain,
+                    'Surface Water': entity.surface_water
+                },
+                associations: associations(entity, [
+                    ['residents', 'people'],
+                    ['films',     'films']
+                ])
+            }
         }
     },
 
@@ -85,14 +106,23 @@ export const ListTypes = {
                 id:    entity.id,
                 title: entity.name,
                 description: {
-                    'Classification': entity.classification,
-                    'Eye Colors'    : entity.eye_colors,
-                    'Hair Colors'   : entity.hair_colors
+                    'Classification': entity.classification
                 }
             }
         },
         Details: function(entity) {
-            return { id: entity.id }
+            return {
+                title: entity.name,
+                details: {
+                    'Classification': entity.classification,
+                    'Eye Colors'    : entity.eye_colors,
+                    'Hair Colors'   : entity.hair_colors
+                },
+                associations: associations(entity, [
+                    ['people', 'people'],
+                    ['films',  'films']
+                ])
+            }
         }
     },
 
@@ -109,7 +139,18 @@ export const ListTypes = {
             }
         },
         Details: function(entity) {
-            return { id: entity.id }
+            return {
+                title: entity.name,
+                details: {
+                    'Description':   entity.description,
+                    'Vehicle Class': entity.vehicle_class,
+                    'Length':        entity.length
+                },
+                associations: associations(entity, [
+                    ['pilot', 'people'],
+                    ['films', 'films']
+                ])
+            }
         }
     }
 }
@@ -127,13 +168,28 @@ function associations(entity, properties) {
 
 // filters ids in association array
 function filter(entity, property) {
+
     if (entity.hasOwnProperty(property)) {
-        const ids = [ ]
-        entity[property].forEach(url => {
-            const id = url.substring(url.lastIndexOf('/') + 1);
-            if (id != '') ids.push(id)
-        })
-        return ids
+
+        const value = entity[property]
+        const ider  = function(url) { return url.substring(url.lastIndexOf('/') + 1) }
+
+        if (Array.isArray(value)) {
+
+            const ids = [ ]
+            entity[property].forEach(url => {
+                const id = ider(url)
+                if (id != '') ids.push(id)
+            })
+            return ids
+
+        } else if (typeof value === 'string') {
+
+            const id = ider(value)
+            if (id != '') return [id]
+            else return [ ]
+
+        } else return [ ]
     }
     else return [ ]
 }
