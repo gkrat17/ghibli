@@ -1,4 +1,4 @@
-import { key, ListTypes, fetch, Result, error } from './utils.js'
+import { key, ListTypes, Host, fetch, Result, error } from './utils.js'
 
 const urlParams = new URLSearchParams(window.location.search)
 
@@ -8,9 +8,9 @@ if (id != null) { // validate id
     if (ListTypes.hasOwnProperty(listType)) { // validate listType
 
         const value = ListTypes[listType]
-        const path  = `${value.Value}/${id}`
+        const url   = `${Host}/${value.Value}/${id}`
 
-        fetch(path, (result, data) => {
+        fetch(url, (result, data) => {
             switch (result) {
                 case Result.Success:
                     append(value.Details(data))

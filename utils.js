@@ -136,9 +136,9 @@ export const Result = {
 export const Host = 'https://ghibliapi.herokuapp.com'
 
 // fetchs data from server
-export function fetch(path, completion) {
+export function fetch(url, completion) {
     const request = new XMLHttpRequest()
-    request.open('GET', `${Host}/${path}`, true)
+    request.open('GET', url, true)
     request.onload = function() {
         const response = JSON.parse(this.response)
         if (request.status == 200)

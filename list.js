@@ -1,4 +1,4 @@
-import { key, ListTypes, fetch, Result, error, navigate2 } from './utils.js'
+import { key, ListTypes, Host, fetch, Result, error, navigate2 } from './utils.js'
 
 const container = document.querySelector('#container')
 const urlParams = new URLSearchParams(window.location.search)
@@ -12,7 +12,8 @@ if (ListTypes.hasOwnProperty(listType)) { // validate listType
     switch (listData) {
 
         case 'all':
-            fetch(value.Value, (result, data) => {
+            const url = `${Host}/${value.Value}`
+            fetch(url, (result, data) => {
                 switch (result) {
                     case Result.Success:
                         data.map(value.Description).forEach(entity => { append(entity) })
@@ -31,8 +32,8 @@ if (ListTypes.hasOwnProperty(listType)) { // validate listType
                 break
             }
             ids.split(',').forEach(id => {
-                const path = `${value.Value}/${id}`
-                fetch(path, (result, data) => {
+                const url = `${Host}/${value.Value}/${id}`
+                fetch(url, (result, data) => {
                     switch (result) {
                         case Result.Success:
                             append(value.Description(data))
