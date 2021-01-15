@@ -1,5 +1,6 @@
-import { key, ListTypes, fetch, Result, error } from './utils.js'
+import { key, ListTypes, fetch, Result, error, navigate2 } from './utils.js'
 
+const container = document.querySelector('#container')
 const urlParams = new URLSearchParams(window.location.search)
 const listType  = key(urlParams.get('listType'))
 
@@ -51,5 +52,25 @@ if (ListTypes.hasOwnProperty(listType)) { // validate listType
 
 // appends child to container list
 function append(entity) {
-    console.log(entity) // TODO: append to container
+
+    const element = document.createElement('div')
+    element.setAttribute('data-id', entity.id)
+    element.addEventListener('click', function() {
+        const id            = this.dataset.id
+        const listTypeValue = ListTypes[listType].Value
+        navigate2('details', { listType: listTypeValue, id: id })
+    })
+    container.appendChild(element)
+
+    const title = document.createElement('h1')
+    title.textContent = entity.title
+    element.appendChild(title);
+
+    for (const [key, value] of Object.entries(entity.description)) {
+        if (entity.description.hasOwnProperty(key)) {
+            const description = document.createElement('h4')
+            description.textContent = `${key}: ${value}`
+            element.appendChild(description)
+        }
+    }
 }
