@@ -50,7 +50,7 @@ if (ListTypes.hasOwnProperty(listType)) { // validate listType
     }
 } else error('invalid listType parameter')
 
-// appends child to container list
+// appends child to container
 function append(entity) {
 
     const element = document.createElement('div')
