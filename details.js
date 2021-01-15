@@ -1,5 +1,6 @@
-import { key, ListTypes, Host, fetch, Result, error } from './utils.js'
+import { key, ListTypes, Host, fetch, Result, error, iterate, navigate2 } from './utils.js'
 
+const container = document.querySelector('#container')
 const urlParams = new URLSearchParams(window.location.search)
 
 const id = urlParams.get('id')
@@ -26,5 +27,35 @@ if (id != null) { // validate id
 
 // appends child to container
 function append(entity) {
-    console.log(entity)
+
+    const element = document.createElement('div')
+    container.appendChild(element)
+
+    const title = document.createElement('h1')
+    title.textContent = entity.title
+    element.appendChild(title);
+
+    iterate(entity.details, function(key, value) {
+        const detail = document.createElement('h4')
+        detail.textContent = `${key}: ${value}`
+        element.appendChild(detail)
+    })
+
+    iterate(entity.associations, function(key, ids) {
+        const association = document.createElement('button')
+
+        association.setAttribute('data-list-type', key)
+        association.setAttribute('data-ids',       ids)
+
+        association.textContent = `Associated ${key}`
+
+        association.addEventListener('click', function() {
+            const listType = this.dataset.listType
+            const ids      = this.dataset.ids
+            const listData = 'certain'
+            navigate2('list', { listType: listType, listData: listData, ids: ids })
+        })
+
+        container.appendChild(association)
+    })
 }

@@ -1,4 +1,4 @@
-import { key, ListTypes, Host, fetch, Result, error, navigate2 } from './utils.js'
+import { key, ListTypes, Host, fetch, Result, error, navigate2, iterate } from './utils.js'
 
 const container = document.querySelector('#container')
 const urlParams = new URLSearchParams(window.location.search)
@@ -67,11 +67,9 @@ function append(entity) {
     title.textContent = entity.title
     element.appendChild(title);
 
-    for (const [key, value] of Object.entries(entity.description)) {
-        if (entity.description.hasOwnProperty(key)) {
-            const description = document.createElement('h4')
-            description.textContent = `${key}: ${value}`
-            element.appendChild(description)
-        }
-    }
+    iterate(entity.description, function(key, value) {
+        const description = document.createElement('h4')
+        description.textContent = `${key}: ${value}`
+        element.appendChild(description)
+    })
 }

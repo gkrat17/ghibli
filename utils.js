@@ -247,3 +247,10 @@ export function fetch(url, completion) {
 export function error(message) {
     console.log('Failure', message)
 }
+
+// iterates over object
+export function iterate(object, handler) {
+    for (const [key, value] of Object.entries(object))
+        if (object.hasOwnProperty(key))
+            handler(key, value)
+}
