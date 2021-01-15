@@ -20,7 +20,22 @@ export const ListTypes = {
             }
         },
         Details: function(entity) {
-            return { id: entity.id }
+            return {
+                title: entity.title,
+                details: {
+                    'Description':  entity.description,
+                    'Director':     entity.director,
+                    'Producer':     entity.producer,
+                    'Release Date': entity.release_date,
+                    'Rate Score':   entity.rt_score
+                },
+                associations: associations(entity, [
+                    ['people',    'People'],
+                    ['species',   'Species'],
+                    ['locations', 'Locations'],
+                    ['vehicles',  'Vehicles']
+                ])
+            }
         }
     },
 
@@ -99,6 +114,30 @@ export const ListTypes = {
     }
 }
 
+// creates associations
+function associations(entity, properties) {
+    const associations = { }
+    properties.forEach(property => {
+        const ids = filter(entity, property[0])
+        if (ids.length > 0)
+            associations[property[1]] = ids
+    })
+    return associations
+}
+
+// filters ids in association array
+function filter(entity, property) {
+    if (entity.hasOwnProperty(property)) {
+        const ids = [ ]
+        entity[property].forEach(url => {
+            const id = url.substring(url.lastIndexOf('/') + 1);
+            if (id != '') ids.push(id)
+        })
+        return ids
+    }
+    else return [ ]
+}
+
 // returns key of ListTypes by its value
 export function key(value) {
     return Object.keys(ListTypes).find(key => ListTypes[key].Value === value)
@@ -106,7 +145,7 @@ export function key(value) {
 
 // navigates to page specified by path variable
 // for example - 'list', 'description'
-export function navigate2(path, params) {
+export function navigate2(path, params = {}) {
 
     const form  = document.createElement('form')
     form.method = 'GET'

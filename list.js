@@ -4,7 +4,7 @@ const container = document.querySelector('#container')
 const urlParams = new URLSearchParams(window.location.search)
 const listType  = key(urlParams.get('listType'))
 
-if (ListTypes.hasOwnProperty(listType)) { // validate listType
+if (listType != null) { // validate listType
 
     const value    = ListTypes[listType]
     const listData = urlParams.get('listData')

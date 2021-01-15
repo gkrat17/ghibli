@@ -4,8 +4,8 @@ const urlParams = new URLSearchParams(window.location.search)
 
 const id = urlParams.get('id')
 if (id != null) { // validate id
-    const listType  = key(urlParams.get('listType'))
-    if (ListTypes.hasOwnProperty(listType)) { // validate listType
+    const listType = key(urlParams.get('listType'))
+    if (listType != null) { // validate listType
 
         const value = ListTypes[listType]
         const url   = `${Host}/${value.Value}/${id}`
