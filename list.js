@@ -16,7 +16,10 @@ if (listType != null) { // validate listType
             fetch(url, (result, data) => {
                 switch (result) {
                     case Result.Success:
-                        data.map(value.Description).forEach(entity => { append(entity) })
+                        if (data.length == 1) {
+                            const id = value.Description(data[0]).id
+                            navigate2('details', { listType: value.Value, id: id })
+                        } else data.map(value.Description).forEach(entity => { append(entity) })
                         break
                     case Result.Failure:
                         error(data)
@@ -26,12 +29,17 @@ if (listType != null) { // validate listType
             break
 
         case 'certain':
-            const ids = urlParams.get('ids')
+            var ids = urlParams.get('ids')
             if (ids == null) {
                 error('ids not specified')
                 break
             }
-            ids.split(',').forEach(id => {
+            ids = ids.split(',')
+            if (ids.length == 1) {
+                navigate2('details', { listType: value.Value, id: ids[0]})
+                break
+            } 
+            ids.forEach(id => {
                 const url = `${Host}/${value.Value}/${id}`
                 fetch(url, (result, data) => {
                     switch (result) {
