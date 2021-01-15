@@ -27,7 +27,7 @@ if (ListTypes.hasOwnProperty(listType)) { // validate listType
         case 'certain':
             const ids = urlParams.get('ids')
             if (ids == null) {
-                error('ids not passed')
+                error('ids not specified')
                 break
             }
             ids.split(',').forEach(id => {
@@ -46,9 +46,9 @@ if (ListTypes.hasOwnProperty(listType)) { // validate listType
             break
 
         default:
-            error('invalid listData parameter')
+            error('invalid or not specified listData parameter')
     }
-} else error('invalid listType parameter')
+} else error('invalid or not specified listType parameter')
 
 // appends child to container
 function append(entity) {
