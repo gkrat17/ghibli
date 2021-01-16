@@ -1,4 +1,4 @@
-import { ListTypes, navigate2 } from './utils.js'
+import { ListTypes, navigate2 } from '../utils/utils.js'
 
 const container = document.querySelector('#container')
 

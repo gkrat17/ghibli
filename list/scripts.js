@@ -1,4 +1,4 @@
-import { key, ListTypes, Host, fetch, Result, error, navigate2, iterate } from './utils.js'
+import { key, ListTypes, Host, fetch, Result, error, navigate2, iterate } from '../utils/utils.js'
 
 const container = document.querySelector('#container')
 const urlParams = new URLSearchParams(window.location.search)

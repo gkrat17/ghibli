@@ -27,10 +27,10 @@ body {
 }
 
 @keyframes animate {
-    0%, 100% { background-image: url(img/my-neighbor-totoro.png); }
-    25% { background-image: url(img/spirited-away.png); }
-    50% { background-image: url(img/howls-moving-castle.png); }
-    75% { background-image: url(img/castle-in-the-sky.png); }
+    0%, 100% { background-image: url(resources/my-neighbor-totoro.png); }
+    25% { background-image: url(resources/spirited-away.png); }
+    50% { background-image: url(resources/howls-moving-castle.png); }
+    75% { background-image: url(resources/castle-in-the-sky.png); }
 }
 
 /* configure #title */

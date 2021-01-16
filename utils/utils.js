@@ -205,7 +205,7 @@ export function navigate2(path, params = {}) {
 
     const form  = document.createElement('form')
     form.method = 'GET'
-    form.action = `${path}.html`
+    form.action = `../${path}/index.html`
 
     for (const [key, value] of Object.entries(params)) {
         if (params.hasOwnProperty(key)) {
