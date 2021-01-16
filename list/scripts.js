@@ -1,7 +1,7 @@
-import { key, ListTypes, capitalize, Host, fetch, Result, error, navigate2, iterate } from '../utils/utils.js'
+import { key, ListTypes, capitalize, Host, fetch, Result, error, navigate2, iterate, truncate } from '../utils/utils.js'
 
 const container = document.querySelector('.container')
-const title     = document.querySelector('.title')
+const title     = document.querySelector('.heading')
 const urlParams = new URLSearchParams(window.location.search)
 const listType  = key(urlParams.get('listType'))
 
@@ -74,13 +74,25 @@ function append(entity) {
     })
     container.appendChild(element)
 
-    const title = document.createElement('h1')
+    const title = document.createElement('p')
+    title.setAttribute('class', 'title')
     title.textContent = entity.title
-    element.appendChild(title);
+    element.appendChild(title)
+
+    const dcontainer = document.createElement('div')
+    dcontainer.setAttribute('class', 'dcontainer')
+    element.appendChild(dcontainer)
 
     iterate(entity.description, function(key, value) {
-        const description = document.createElement('h4')
-        description.textContent = `${key}: ${value}`
-        element.appendChild(description)
+
+        const keyElement = document.createElement('p')
+        keyElement.setAttribute('class', 'key')
+        keyElement.textContent = `${key}:`
+        dcontainer.appendChild(keyElement)
+
+        const valueElement = document.createElement('p')
+        valueElement.setAttribute('class', 'value')
+        valueElement.textContent = truncate(value)
+        dcontainer.appendChild(valueElement)
     })
 }

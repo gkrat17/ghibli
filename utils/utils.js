@@ -259,3 +259,10 @@ export function iterate(object, handler) {
 export function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
 }
+
+// slices first 'length' part of string and appends '...' if needed
+export function truncate(string, length = 128) {
+    if (string.length > length)
+        string = string.slice(0, length) + '...'
+    return string
+}

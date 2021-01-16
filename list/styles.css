@@ -37,6 +37,19 @@ body {
     align-items: center;
 }
 
+/* configure heading */
+.heading {
+    margin: 0;
+    margin-top: 16px;
+    padding: 0;
+
+    color: darkgoldenrod;
+
+    text-align: center;
+    font-family: fantasy;
+    font-size: 64px;
+}
+
 /* configure container */
 
 .container {
@@ -56,6 +69,91 @@ body {
     justify-content: center;
 }
 
+/* configure container > div */
+
 .container > div {
-    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: wheat;
+    opacity: 0.85;
+
+    border-radius: 32px;
+    border-width: 8px;
+    border-style: double;
+    border-color: darkgoldenrod;
+
+    transition: all .2s linear;
+}
+
+.container > div:hover {
+    box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
+    transform: translate3D(0, -8px, 0);
+}
+
+/* configure container > div > title */
+
+.container > div > .title {
+    margin: 16px;
+    margin-bottom: 0;
+    padding: 0px;
+
+    text-align: center;
+    font-weight: bold;
+    font-family: fantasy;
+    font-size: 32px;
+}
+
+/* configure container > div > dcontainer */
+
+.container > div > .dcontainer {
+    width: 85%;
+    margin: 16px;
+    padding: 0px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    background-color: khaki;
+
+    border-radius: 16px;
+    border-width: 4px;
+    border-style: dotted;
+    border-color: darkgoldenrod;
+
+    box-shadow: 2px 4px 25px rgba(0, 0, 0, 1);
+}
+
+/* configure container > div > dcontainer > key */
+
+.container > div > .dcontainer > .key {
+    margin: 0px;
+    margin-top: 4px;
+    margin-left: 8px;
+    padding: 0px;
+
+    color: saddlebrown;
+
+    font-weight: bold;
+    font-family: fantasy;
+    font-size: 24px;
+}
+
+/* configure container > div > dcontainer > value */
+
+.container > div > .dcontainer > .value {
+    margin: 0px;
+    margin-bottom: 4px;
+    margin-left: 8px;
+    padding: 0px;
+
+    color: midnightblue;
+
+    font-family: fantasy;
+    font-size: 18px;
+
 }
