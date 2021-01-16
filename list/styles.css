@@ -89,7 +89,6 @@ body {
 }
 
 .container > div:hover {
-    box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
     transform: translate3D(0, -8px, 0);
 }
 
@@ -115,7 +114,7 @@ body {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
 
     background-color: khaki;
@@ -125,7 +124,7 @@ body {
     border-style: dotted;
     border-color: darkgoldenrod;
 
-    box-shadow: 2px 4px 25px rgba(0, 0, 0, 1);
+    box-shadow: 2px 4px 32px rgba(0, 0, 0, 1);
 }
 
 /* configure container > div > dcontainer > key */
@@ -155,5 +154,4 @@ body {
 
     font-family: fantasy;
     font-size: 18px;
-
 }
