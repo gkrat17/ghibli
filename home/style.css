@@ -44,7 +44,7 @@ body {
     color: lightgoldenrodyellow;
 
     font-family: fantasy;
-    font-size: 96px;
+    font-size: 8vh;
 }
 
 /* configure description */
@@ -59,14 +59,14 @@ body {
     color: khaki;
 
     font-family: fantasy;
-    font-size: 48px;
+    font-size: 6vh;
 }
 
 /* configure container */
 
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 256px);
+    grid-template-columns: repeat(auto-fit, 14vh);
     align-content: center;
     justify-content: center;
     gap: 16px;
@@ -76,11 +76,11 @@ body {
 /* configure container > button */
 
 .container > button {
-    margin: 16px;
+    margin: 0;
     padding: 0;
 
-    width: 256px;
-    height: 256px;
+    width: 14vh;
+    height: 14vh;
 
     color: black;
     background-color: lightgoldenrodyellow;
@@ -88,10 +88,10 @@ body {
     opacity: 0.8;
 
     font-family: fantasy;
-    font-size: 32px;
+    font-size: 2.5vh;
 
     border-radius: 50%;
-    border-width: 8px;
+    border-width: 0.5vh;
     border-style: dashed;
 
     outline: none;
