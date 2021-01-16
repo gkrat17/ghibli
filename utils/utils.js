@@ -254,3 +254,8 @@ export function iterate(object, handler) {
         if (object.hasOwnProperty(key))
             handler(key, value)
 }
+
+// upper cases first letter and lower cases rest
+export function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
+}

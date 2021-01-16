@@ -1,6 +1,7 @@
-import { key, ListTypes, Host, fetch, Result, error, navigate2, iterate } from '../utils/utils.js'
+import { key, ListTypes, capitalize, Host, fetch, Result, error, navigate2, iterate } from '../utils/utils.js'
 
 const container = document.querySelector('.container')
+const title     = document.querySelector('.title')
 const urlParams = new URLSearchParams(window.location.search)
 const listType  = key(urlParams.get('listType'))
 
@@ -8,6 +9,8 @@ if (listType != null) { // validate listType
 
     const value    = ListTypes[listType]
     const listData = urlParams.get('listData')
+
+    title.textContent = `List of ${capitalize(value.Value)}!`
 
     switch (listData) {
 
