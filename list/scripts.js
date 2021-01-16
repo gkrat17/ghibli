@@ -1,6 +1,6 @@
 import { key, ListTypes, Host, fetch, Result, error, navigate2, iterate } from '../utils/utils.js'
 
-const container = document.querySelector('#container')
+const container = document.querySelector('.container')
 const urlParams = new URLSearchParams(window.location.search)
 const listType  = key(urlParams.get('listType'))
 

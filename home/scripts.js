@@ -1,6 +1,6 @@
 import { ListTypes, navigate2 } from '../utils/utils.js'
 
-const container = document.querySelector('#container')
+const container = document.querySelector('.container')
 
 for (const listType in ListTypes) {
     const value = ListTypes[listType].Value
