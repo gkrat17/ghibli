@@ -66,6 +66,12 @@ body {
     align-items: center;
 }
 
+@media screen and (max-width: 1410px) {
+    #container {
+        flex-direction: column;
+    }
+}
+
 /* configure #container > button */
 
 #container > button {
