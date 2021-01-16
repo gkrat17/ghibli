@@ -93,6 +93,8 @@ body {
     border-width: 8px;
     border-style: dashed;
 
+    outline: none;
+
     transition: transform 2s;
 }
 
