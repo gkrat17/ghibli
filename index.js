@@ -8,7 +8,7 @@ for (const listType in ListTypes) {
     const element = document.createElement('button')
 
     element.setAttribute('data-list-type', value)
-    element.textContent = value
+    element.textContent = value.charAt(0).toUpperCase() + value.slice(1)
 
     element.addEventListener('click', function() {
         const listType = this.dataset.listType

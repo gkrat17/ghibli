@@ -1,16 +1,23 @@
+/* configure body */
+
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
 }
 
+/* configure #main */
+
 #main {
     width: 100%;
     height: 100%;
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    overflow: hidden;
 
     background-size: cover;
     background-position: center;
@@ -24,4 +31,65 @@ body {
     25% { background-image: url(img/spirited-away.png); }
     50% { background-image: url(img/howls-moving-castle.png); }
     75% { background-image: url(img/castle-in-the-sky.png); }
+}
+
+/* configure #title */
+
+#title {
+    margin: 0;
+    padding: 0;
+
+    color: lightgoldenrodyellow;
+
+    font-family: fantasy;
+    font-size: 96px;
+}
+
+/* configure #description */
+
+#description {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 64px;
+
+    color: khaki;
+
+    font-family: fantasy;
+    font-size: 48px;
+}
+
+/* configure #container */
+
+#container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* configure #container > button */
+
+#container > button {
+    margin: 16px;
+    padding: 0;
+
+    width: 250px;
+    height: 250px;
+
+    color: black;
+    background-color: lightgoldenrodyellow;
+    border-color: gold;
+    opacity: 0.8;
+
+    font-family: fantasy;
+    font-size: 32px;
+
+    border-radius: 50%;
+    border-width: 8px;
+    border-style: dashed;
+
+    transition: transform 2s;
+}
+
+#container > button:hover {
+    transform: rotate(360deg);
 }
