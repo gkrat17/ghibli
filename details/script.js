@@ -1,7 +1,9 @@
 import { key, ListTypes, Host, fetch, Result, error, navigate2, iterate } from '../utils/utils.js'
 
-const container = document.querySelector('.container')
-const urlParams = new URLSearchParams(window.location.search)
+const heading    = document.querySelector('.heading')
+const dcontainer = document.querySelector('.dcontainer')
+const acontainer = document.querySelector('.acontainer')
+const urlParams  = new URLSearchParams(window.location.search)
 
 const id = urlParams.get('id')
 if (id != null) { // validate id
@@ -14,7 +16,7 @@ if (id != null) { // validate id
         fetch(url, (result, data) => {
             switch (result) {
                 case Result.Success:
-                    append(value.Details(data))
+                    display(value.Details(data))
                     break
                 case Result.Failure:
                     error(data)
@@ -25,21 +27,18 @@ if (id != null) { // validate id
 } else error('id not specified')
 
 // appends child to container
-function append(entity) {
+function display(entity) {
 
-    const element = document.createElement('div')
-    container.appendChild(element)
+    heading.textContent = entity.title
 
-    const title = document.createElement('h1')
-    title.textContent = entity.title
-    element.appendChild(title);
-
+    // display details
     iterate(entity.details, function(key, value) {
-        const detail = document.createElement('h4')
+        const detail = document.createElement('p')
         detail.textContent = `${key}: ${value}`
-        element.appendChild(detail)
+        dcontainer.appendChild(detail)
     })
 
+    // display associations
     iterate(entity.associations, function(key, ids) {
         const association = document.createElement('button')
 
@@ -55,6 +54,6 @@ function append(entity) {
             navigate2('list', { listType: listType, listData: listData, ids: ids })
         })
 
-        container.appendChild(association)
+        acontainer.appendChild(association)
     })
 }
