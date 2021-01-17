@@ -34,9 +34,21 @@ function display(entity) {
 
     // display details
     iterate(entity.details, function(key, value) {
-        const detail = document.createElement('p')
-        detail.textContent = `${key}: ${value}`
+        const detail = document.createElement('div')
+        const title = document.createElement('p')
+        const description = document.createElement('p')
+
         dcontainer.appendChild(detail)
+
+        detail.appendChild(title)
+        detail.appendChild(description)
+
+        title.textContent       = key
+        description.textContent = value
+
+        detail.setAttribute('class', 'detail')
+        title.setAttribute('class', 'title')
+        description.setAttribute('class', 'description')
     })
 
     // display associations
