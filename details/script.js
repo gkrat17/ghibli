@@ -26,7 +26,7 @@ if (id != null) { // validate id
     } else error('invalid or not specified listType parameter')
 } else error('id not specified')
 
-// dispays entity
+// displays entity
 function display(entity) {
 
     // set heading text
