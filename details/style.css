@@ -52,6 +52,7 @@ body {
     width: 100%;
 
     margin: 0;
+    margin-bottom: 32px;
     padding: 0;
 
     display: grid;
@@ -109,7 +110,7 @@ body {
 
     text-align: center;
     font-family: fantasy;
-    font-size: 1.5vh;
+    font-size: 1.75vh;
 
     border-radius: 8px;
     border-width: 8px;
@@ -122,12 +123,60 @@ body {
     width: 100%;
 
     margin: 0;
+    margin-bottom: 32px;
     padding: 0;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, 256px);
+    grid-template-columns: repeat(auto-fit, 196px);
     gap: 32px;
 
     align-content: center;
     justify-content: center;
+}
+
+/* configure associations */
+.associations {
+    color: skyblue;
+    text-align: center;
+    font-family: fantasy;
+    font-size: 5vh;
+}
+
+/* configure container > button */
+.acontainer > button {
+    margin: 0;
+    padding: 0;
+
+    width: 196px;
+    height: 196px;
+
+    color: black;
+    background-color: lightgoldenrodyellow;
+    border-color: gold;
+    opacity: 0.8;
+
+    font-family: fantasy;
+    font-size: 2.5vh;
+
+    border-radius: 50%;
+    border-width: 8px;
+    border-style: dotted;
+
+    outline: none;
+}
+
+.acontainer > button:hover {
+    animation: spin 10s infinite linear;
+}
+
+.acontainer > button:hover span {
+  animation: spin 10s infinite reverse linear;
+}
+
+.acontainer > button > span {
+  display: inline-block;
+}
+
+@keyframes spin {
+  100% { transform: rotate(1turn); }
 }

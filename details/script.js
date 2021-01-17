@@ -1,4 +1,4 @@
-import { key, ListTypes, Host, fetch, Result, error, navigate2, iterate } from '../utils/utils.js'
+import { key, ListTypes, Host, fetch, Result, error, navigate2, iterate, capitalize } from '../utils/utils.js'
 
 const heading    = document.querySelector('.heading')
 const dcontainer = document.querySelector('.dcontainer')
@@ -54,11 +54,12 @@ function display(entity) {
     // display associations
     iterate(entity.associations, function(key, ids) {
         const association = document.createElement('button')
-
         association.setAttribute('data-list-type', key)
         association.setAttribute('data-ids',       ids)
 
-        association.textContent = `Associated ${key}`
+        const span = document.createElement('span')
+        association.appendChild(span)
+        span.textContent = capitalize(key)
 
         association.addEventListener('click', function() {
             const listType = this.dataset.listType
