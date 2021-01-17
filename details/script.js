@@ -29,6 +29,7 @@ if (id != null) { // validate id
 // appends child to container
 function display(entity) {
 
+    // set heading text
     heading.textContent = entity.title
 
     // display details
