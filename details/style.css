@@ -36,8 +36,8 @@ body {
 
 /* configure heading */
 .heading {
-    margin: 0;
     margin-top: 16px;
+    margin-bottom: 16px;
     padding: 0;
 
     color: darksalmon;
@@ -64,17 +64,57 @@ body {
 
 /* configure detail */
 .detail {
-    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rosybrown;
+    opacity: 0.75;
+
+    border-radius: 16px;
+    border-width: 8px;
+    border-style: solid;
+    border-color: darksalmon;
 }
 
 /* configure title */
 .title {
-    color: green;
+    margin: 16px;
+    padding: 16px;
+
+    color: rosybrown;
+
+    background-color: skyblue;
+    opacity: 0.75;
+
+    text-align: center;
+    font-family: fantasy;
+    font-size: 3vh;
+
+    border-radius: 16px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: darksalmon;
 }
 
 /* configure description */
 .description {
-    color: blue;
+    width: 75%;
+    padding: 16px;
+
+    color: midnightblue;
+
+    background-color: burlywood;
+
+    text-align: center;
+    font-family: fantasy;
+    font-size: 1.5vh;
+
+    border-radius: 8px;
+    border-width: 8px;
+    border-style: double;
+    border-color: linen;
 }
 
 /* configure acontainer */

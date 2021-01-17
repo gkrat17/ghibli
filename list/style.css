@@ -80,7 +80,7 @@ body {
     border-style: double;
     border-color: darkgoldenrod;
 
-    transition: all .2s linear;
+    transition: all 0.2s linear;
 }
 
 .container > div:hover {
