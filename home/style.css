@@ -90,9 +90,9 @@ body {
 
     outline: none;
 
-    transition: transform 2s;
+    transition: transform 0.5s;
 }
 
 .container > button:hover {
-    transform: rotate(360deg);
+    transform: scale(1.1);
 }
